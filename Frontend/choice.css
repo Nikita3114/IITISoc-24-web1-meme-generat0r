@@ -1,0 +1,52 @@
+body{
+    background-color:rgb(127, 200, 255) ;
+    color:rgb(210, 75, 30) ;
+    text-align: center;
+    }
+    
+    .button{
+        
+        width: 25opx ;
+        background-color: #edba61; 
+        border: 2px solid #817819;
+        border-radius: 8px;
+        color: rgb(24, 34, 151);
+        cursor: pointer;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+    
+    .b1:hover {
+        transition-duration: 0.4 ;
+        width: 29opx ;
+        background-color: #04AA6D; 
+        border: 2px solid #04AA6D;
+        border-radius: 8px;
+        color: white;
+        cursor: pointer;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+    
+    .b2:hover {
+    
+        transition-duration: 0.4 ;
+        width: 29opx ;
+        background-color: #04AA6D; 
+        border: 2px solid #04AA6D;
+        border-radius: 8px;
+        color: white;
+        cursor: pointer;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        
+    }
