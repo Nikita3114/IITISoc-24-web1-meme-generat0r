@@ -1,0 +1,55 @@
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Header from "./Header";
+import "../../public/login.css";
+import Footer from "./Footer";
+
+const Login = () => {
+  const navigate = useNavigate();
+
+  const handleContinueClick = () => {
+    navigate("/homepage");
+  };
+
+  useEffect(() => {
+    const spanElement = document.querySelector("span");
+    if (spanElement) {
+      spanElement.classList.remove("text-body-secondary");
+    }
+  }, []);
+
+  return (
+    <div>
+      <Header />
+      <div>
+        <div className="profilePic">
+          <img
+            src="https://i.ytimg.com/vi/dpaPOdioeRY/mqdefault.jpg"
+            alt="profilePic"
+          />
+        </div>
+        <div className="username">
+          <input
+            type="search"
+            className="form-control"
+            placeholder="Nickname"
+            aria-label="Search"
+          />
+          <button
+            className="btn btn-primary d-inline-flex align-items-center btn-dark"
+            type="button"
+            onClick={handleContinueClick}
+          >
+            Continue
+            <svg className="bi ms-1" width="90" height="1">
+              <use xlinkHref="#arrow-right-short"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+};
+
+export default Login;
