@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import ProfilePicContext from "./ProfilePicContext";
 
 function HeaderHomepage() {
+  const chosenProfilePic = useContext(ProfilePicContext);
+
   return (
     <section id="header">
       <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -39,11 +42,15 @@ function HeaderHomepage() {
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            <img
-              src="https://i.ytimg.com/vi/dpaPOdioeRY/mqdefault.jpg"
-              alt="mdo"
-              className="rounded-circle"
-            />
+            <div className="profilePic">
+              {chosenProfilePic && (
+                <img
+                  src={chosenProfilePic.url}
+                  alt="profilePic"
+                  style={{ width: "70px", height: "70px" }}
+                />
+              )}
+            </div>
           </Link>
           <ul className="dropdown-menu text-small">
             <li>

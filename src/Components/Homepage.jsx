@@ -3,7 +3,6 @@ import Footer from "./Footer";
 import "../../public/homepage.css";
 import HeaderHomepage from "./HeaderHomepage";
 import { useNavigate } from "react-router-dom";
-import "../../public/newgame.css";
 
 function Homepage() {
   useEffect(() => {

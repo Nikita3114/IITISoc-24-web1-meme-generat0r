@@ -29,7 +29,6 @@ const MemeGenerator = () => {
     reader.onloadend = () => {
       setImage(reader.result);
       setSelectedTemplate(null); // Clear selected template if a new image is uploaded
-      setTexts([{ text: "", x: 0, y: 0 }]); // Reset texts when a new image is uploaded
     };
     reader.readAsDataURL(file);
   };
@@ -59,7 +58,6 @@ const MemeGenerator = () => {
           .forEach((btn) => btn.classList.add("hidden"));
       });
   };
-
   const handleAddText = () => {
     setTexts([...texts, { text: "", x: 50, y: 50 }]);
   };
@@ -83,27 +81,12 @@ const MemeGenerator = () => {
     setTexts(newTexts);
   };
 
-  const handleTemplateSelect = (template) => {
-    setSelectedTemplate(template);
-    setImage(null); // Clear uploaded image if a template is selected
-    setTexts([{ text: "", x: 0, y: 0 }]); // Reset texts when a new template is selected
-  };
-
   return (
     <div style={{ textAlign: "center", padding: "20px" }}>
       <h1>Meme Generator</h1>
       <input type="file" accept="image/*" onChange={handleImageUpload} />
       <div style={{ margin: "20px 0" }}>
-        <button
-          onClick={handleAddText}
-          className="btn"
-          style={{
-            position: "relative",
-            display: "inline-block",
-            backgroundColor: "white",
-            textAlign: "center",
-          }}
-        >
+        <button onClick={handleAddText} className="btn">
           Add Text
         </button>
       </div>
@@ -137,21 +120,17 @@ const MemeGenerator = () => {
                 cursor: "move",
               }}
             >
-              <textarea
+              <input
                 type="text"
                 placeholder="Text"
                 value={textObj.text}
                 onChange={(e) => handleTextChange(index, e.target.value)}
                 style={{
-                  width: "250px",
-                  height: "200px ",
-                  wordWrap: "break-word",
                   background: "transparent",
                   border: "none",
                   color: "white",
                   textAlign: "center",
-                  wordWrap: "break-word",
-                  fontSize: "1.2em",
+                  fontSize: "2em",
                   fontWeight: "bold",
                   textShadow: "2px 2px 4px #000",
                 }}
@@ -194,7 +173,10 @@ const MemeGenerator = () => {
               src={template.url}
               alt={template.name}
               style={{ width: "150px", margin: "10px", cursor: "pointer" }}
-              onClick={() => handleTemplateSelect(template)}
+              onClick={() => {
+                setSelectedTemplate(template);
+                setImage(null); // Clear uploaded image if a template is selected
+              }}
             />
           ))}
         </div>
@@ -203,7 +185,7 @@ const MemeGenerator = () => {
   );
 };
 
-const NewGame = () => {
+const Check = () => {
   return (
     <div>
       <MemeGenerator />
@@ -212,4 +194,4 @@ const NewGame = () => {
   );
 };
 
-export default NewGame;
+export default Check;
