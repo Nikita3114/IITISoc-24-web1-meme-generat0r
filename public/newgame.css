@@ -1,0 +1,29 @@
+.meme-container {
+  position: relative;
+  display: inline-block;
+}
+
+.meme {
+  position: relative;
+}
+
+.draggable-text {
+  position: absolute;
+  cursor: move;
+}
+
+.meme img {
+  max-width: 100%;
+  height: auto;
+}
+
+#footer {
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
