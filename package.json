@@ -10,7 +10,8 @@
     "react-scripts": "^5.0.0",
     "react-router-dom": "6.23.1",
     "axios": "1.7.2",
-    "react-draggable": "4.4.6"
+    "react-draggable": "4.4.6",
+    "html-to-image": "1.11.11"
   },
   "devDependencies": {
     "@types/react": "18.2.38",

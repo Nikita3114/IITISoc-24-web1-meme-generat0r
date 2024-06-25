@@ -1,79 +1,78 @@
 #header {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: black;
-    border: 3px solid black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: black;
+  border: 3px solid black;
+}
+
+body {
+  background: linear-gradient(300deg, #e6d753, #ffa703, #000000);
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  body {
-    background: linear-gradient(300deg, #e6d753, #ffa703, #000000);
-    background-size: 180% 180%;
-    animation: gradient-animation 18s ease infinite;
+  50% {
+    background-position: 100% 50%;
   }
-  
-  @keyframes gradient-animation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  100% {
+    background-position: 0% 50%;
   }
-  
-  .dropdown {
-    padding-right: 70px;
-  }
-  
-  .rounded-circle {
-    height: 60px;
-    width: 60px;
-  }
-  .container {
-    padding: 100px;
-  }
-  .info {
-    padding-right: 40px;
-    border: 4px solid rgb(230, 174, 6);
-    border-radius: 5%;
-    background-color: rgb(230, 174, 6);
-  }
-  
-  .info p {
-    padding: 20px;
-    text-align: left;
-    color: antiquewhite;
-    overflow-wrap: break-word;
-  }
-  
-  .newgame {
-    display: flex;
-    align-items: center;
-  }
-  .newgame img {
-    border-radius: 10%;
-    padding: 10px;
-    height: 250px;
-    width: 250px;
-  }
-  
-  .btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 5px;
-    border-radius: 10%;
-  }
-  
-  #footer {
-    padding-bottom: 40px;
-    padding-top: 10px;
-    background-color: black;
-  }
-  .mb-3 {
-    color: white;
-    font-weight: 400;
-  }
-  
+}
+
+.dropdown {
+  padding-right: 70px;
+}
+
+.rounded-circle {
+  height: 60px;
+  width: 60px;
+}
+.container {
+  padding: 100px;
+}
+.info {
+  padding-right: 40px;
+  border: 4px solid rgb(230, 174, 6);
+  border-radius: 5%;
+  background-color: rgb(230, 174, 6);
+}
+
+.info p {
+  padding: 20px;
+  text-align: left;
+  color: antiquewhite;
+  overflow-wrap: break-word;
+}
+
+.newgame {
+  display: flex;
+  align-items: center;
+}
+.newgame img {
+  border-radius: 10%;
+  padding: 10px;
+  height: 250px;
+  width: 250px;
+}
+
+.btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10%;
+}
+
+#footer {
+  padding-bottom: 40px;
+  padding-top: 10px;
+  background-color: black;
+}
+.mb-3 {
+  color: white;
+  font-weight: 400;
+}

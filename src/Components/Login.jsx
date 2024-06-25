@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import "../../public/login.css";
 import Footer from "./Footer";
+import ProfilePicContext from "./ProfilePicContext";
 
 const Login = () => {
   const navigate = useNavigate();
+  const chosenProfilePic = useContext(ProfilePicContext);
 
   const handleContinueClick = () => {
     navigate("/homepage");
@@ -23,10 +25,9 @@ const Login = () => {
       <Header />
       <div>
         <div className="profilePic">
-          <img
-            src="https://i.ytimg.com/vi/dpaPOdioeRY/mqdefault.jpg"
-            alt="profilePic"
-          />
+          {chosenProfilePic && (
+            <img src={chosenProfilePic.url} alt="profilePic" />
+          )}
         </div>
         <div className="username">
           <input
