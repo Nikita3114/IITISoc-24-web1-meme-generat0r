@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import Draggable from "react-draggable";
 import Footer from "./Footer";
+import Draggable from "react-draggable";
 import "../../public/newgame.css";
+import { toPng } from "html-to-image";
 
-const NewGame = () => {
+const MemeGenerator = () => {
+  const [texts, setTexts] = useState([{ text: "", x: 0, y: 0 }]);
+  const [image, setImage] = useState(null);
   const [templates, setTemplates] = useState([]);
   const [selectedTemplate, setSelectedTemplate] = useState(null);
-  const [texts, setTexts] = useState([]);
-  const [memeImage, setMemeImage] = useState(null);
+  const memeRef = useRef(null);
 
   useEffect(() => {
     axios
@@ -21,121 +23,190 @@ const NewGame = () => {
       .catch((error) => console.error("Error fetching meme templates:", error));
   }, []);
 
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImage(reader.result);
+      setSelectedTemplate(null); // Clear selected template if a new image is uploaded
+      setTexts([{ text: "", x: 0, y: 0 }]); // Reset texts when a new image is uploaded
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleDownload = () => {
+    if (memeRef.current === null) {
+      return;
+    }
+    document
+      .querySelectorAll(".delete-btn")
+      .forEach((btn) => btn.classList.add("hidden"));
+    toPng(memeRef.current)
+      .then((dataUrl) => {
+        document
+          .querySelectorAll(".delete-btn")
+          .forEach((btn) => btn.classList.add("hidden"));
+
+        const link = document.createElement("a");
+        link.download = "meme.png";
+        link.href = dataUrl;
+        link.click();
+      })
+      .catch((err) => {
+        console.error("Failed to create image", err);
+        document
+          .querySelectorAll(".delete-btn")
+          .forEach((btn) => btn.classList.add("hidden"));
+      });
+  };
+
   const handleAddText = () => {
-    console.log("Add Text button clicked");
     setTexts([...texts, { text: "", x: 50, y: 50 }]);
   };
 
   const handleTextChange = (index, newText) => {
     const newTexts = texts.map((t, i) =>
-      i === index ? { ...t, text: newText } : t
+      i === index ? { ...t, text: newText } : t,
     );
     setTexts(newTexts);
   };
 
   const handleDragStop = (index, e, data) => {
     const newTexts = texts.map((t, i) =>
-      i === index ? { ...t, x: data.x, y: data.y } : t
+      i === index ? { ...t, x: data.x, y: data.y } : t,
     );
     setTexts(newTexts);
   };
 
-  const handleGenerateMeme = () => {
-    if (!selectedTemplate) return;
+  const handleDeleteText = (index) => {
+    const newTexts = texts.filter((_, i) => i !== index);
+    setTexts(newTexts);
+  };
 
-    const canvas = document.createElement("canvas");
-    const context = canvas.getContext("2d");
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-    img.src = selectedTemplate.url;
-    img.onload = () => {
-      canvas.width = img.width;
-      canvas.height = img.height;
-      context.drawImage(img, 0, 0);
-
-      context.font = "30px Impact";
-      context.textAlign = "center";
-      context.fillStyle = "white";
-      context.strokeStyle = "black";
-      context.lineWidth = 2;
-
-      texts.forEach((textObj) => {
-        context.fillText(textObj.text, textObj.x, textObj.y);
-        context.strokeText(textObj.text, textObj.x, textObj.y);
-      });
-
-      const dataUrl = canvas.toDataURL("image/png");
-      setMemeImage(dataUrl);
-    };
+  const handleTemplateSelect = (template) => {
+    setSelectedTemplate(template);
+    setImage(null); // Clear uploaded image if a template is selected
+    setTexts([{ text: "", x: 0, y: 0 }]); // Reset texts when a new template is selected
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "20px" }}>
+    <div style={{ textAlign: "center", padding: "20px" }}>
       <h1>Meme Generator</h1>
-      {templates.length > 0 ? (
-        <div>
-          <select
-            onChange={(e) =>
-              setSelectedTemplate(
-                templates.find((t) => t.id === e.target.value)
-              )
-            }
-          >
-            <option value="">Select a template</option>
-            {templates.map((template) => (
-              <option key={template.id} value={template.id}>
-                {template.name}
-              </option>
-            ))}
-          </select>
-        </div>
-      ) : (
-        <p>Loading templates...</p>
-      )}
-      <br />
-      <button onClick={handleAddText}>Add Text</button>
-      <br />
-      <div className="meme-container">
-        {selectedTemplate && (
-          <div className="meme">
-            <img
-              src={selectedTemplate.url}
-              alt="Meme Template"
-              width="700px"
-              height="700px"
-            />
-            {texts.map((textObj, index) => (
-              <Draggable
-                key={index}
-                defaultPosition={{ x: textObj.x, y: textObj.y }}
-                onStop={(e, data) => handleDragStop(index, e, data)}
-              >
-                <div className="draggable-text">
-                  <input
-                    type="text"
-                    value={textObj.text}
-                    onChange={(e) => handleTextChange(index, e.target.value)}
-                  />
-                </div>
-              </Draggable>
-            ))}
-          </div>
-        )}
+      <input type="file" accept="image/*" onChange={handleImageUpload} />
+      <div style={{ margin: "20px 0" }}>
+        <button
+          onClick={handleAddText}
+          className="btn"
+          style={{
+            position: "relative",
+            display: "inline-block",
+            backgroundColor: "white",
+            textAlign: "center",
+          }}
+        >
+          Add Text
+        </button>
       </div>
-      <br />
-      <button onClick={handleGenerateMeme}>Generate Meme</button>
-      <br />
-      {memeImage && (
-        <div className="meme" style={{ marginTop: "20px" }}>
-          <h2>Generated Meme</h2>
+      <div
+        ref={memeRef}
+        style={{
+          position: "relative",
+          display: "inline-block",
+          textAlign: "center",
+        }}
+      >
+        {(image || selectedTemplate) && (
           <img
-            src={memeImage}
-            alt="Generated Meme"
-            height="700px"
-            width="700px"
+            src={image || selectedTemplate.url}
+            alt="Meme"
+            style={{ width: "500px", height: "auto" }}
           />
+        )}
+        {texts.map((textObj, index) => (
+          <Draggable
+            key={index}
+            defaultPosition={{ x: textObj.x, y: textObj.y }}
+            onStop={(e, data) => handleDragStop(index, e, data)}
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: textObj.y,
+                left: textObj.x,
+                transform: "translate(-50%, -50%)",
+                cursor: "move",
+              }}
+            >
+              <textarea
+                type="text"
+                placeholder="Text"
+                value={textObj.text}
+                onChange={(e) => handleTextChange(index, e.target.value)}
+                style={{
+                  width: "250px",
+                  height: "200px ",
+                  wordWrap: "break-word",
+                  background: "transparent",
+                  border: "none",
+                  color: "white",
+                  textAlign: "center",
+                  wordWrap: "break-word",
+                  fontSize: "1.2em",
+                  fontWeight: "bold",
+                  textShadow: "2px 2px 4px #000",
+                }}
+              />
+              <button
+                onClick={() => handleDeleteText(index)}
+                className="delete-btn"
+                style={{
+                  marginLeft: "10px",
+                  cursor: "pointer",
+                  background: "red",
+                  border: "none",
+                  color: "white",
+                  fontSize: "1em",
+                  fontWeight: "bold",
+                  padding: "5px",
+                }}
+              >
+                X
+              </button>
+            </div>
+          </Draggable>
+        ))}
+      </div>
+      <div style={{ marginTop: "20px" }}>
+        <button onClick={handleDownload}>Download Meme</button>
+      </div>
+      <div style={{ marginTop: "20px" }}>
+        <h2>Select a Template</h2>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {templates.map((template) => (
+            <img
+              key={template.id}
+              src={template.url}
+              alt={template.name}
+              style={{ width: "150px", margin: "10px", cursor: "pointer" }}
+              onClick={() => handleTemplateSelect(template)}
+            />
+          ))}
         </div>
-      )}
+      </div>
+    </div>
+  );
+};
+
+const NewGame = () => {
+  return (
+    <div>
+      <MemeGenerator />
       <Footer />
     </div>
   );
