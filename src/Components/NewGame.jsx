@@ -28,8 +28,8 @@ const MemeGenerator = () => {
     const reader = new FileReader();
     reader.onloadend = () => {
       setImage(reader.result);
-      setSelectedTemplate(null); // Clear selected template if a new image is uploaded
-      setTexts([{ text: "", x: 0, y: 0 }]); // Reset texts when a new image is uploaded
+      setSelectedTemplate(null);  
+      setTexts([{ text: "", x: 0, y: 0 }]); 
     };
     reader.readAsDataURL(file);
   };
@@ -85,8 +85,8 @@ const MemeGenerator = () => {
 
   const handleTemplateSelect = (template) => {
     setSelectedTemplate(template);
-    setImage(null); // Clear uploaded image if a template is selected
-    setTexts([{ text: "", x: 0, y: 0 }]); // Reset texts when a new template is selected
+    setImage(null); 
+    setTexts([{ text: "", x: 0, y: 0 }]); 
   };
 
   return (
