@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./Login";
 import Homepage from "./Homepage";
 import NewGame from "./NewGame";
-// import Check from "./check";
 import { ProfilePicProvider } from "./ProfilePicContext";
 
 function App() {
