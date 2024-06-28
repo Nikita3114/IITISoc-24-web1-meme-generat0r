@@ -14,7 +14,6 @@ const Signup = () => {
     const handleSignup = async () => {
         try {
             const response = await axios.post('/api/signup', { name, password });
-            // Assuming the backend responds with a success message
             navigate('/login');
         } catch (error) {
             console.error('Error signing up', error);
