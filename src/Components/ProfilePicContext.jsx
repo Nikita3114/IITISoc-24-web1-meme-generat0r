@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import profilePic from "../../public/picture"; // Ensure this path and import is correct
+import profilePic from "../../public/picture"; 
 
 const ProfilePicContext = createContext();
 
