@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Footer from "./Footer";
 import Draggable from "react-draggable";
-import "../../public/newgame.css";
+import "../../public/styles/newgame.css";
 import { toPng } from "html-to-image";
 
 const MemeGenerator = () => {
@@ -28,8 +28,8 @@ const MemeGenerator = () => {
     const reader = new FileReader();
     reader.onloadend = () => {
       setImage(reader.result);
-      setSelectedTemplate(null);  
-      setTexts([{ text: "", x: 0, y: 0 }]); 
+      setSelectedTemplate(null); // Clear selected template if a new image is uploaded
+      setTexts([{ text: "", x: 0, y: 0 }]); // Reset texts when a new image is uploaded
     };
     reader.readAsDataURL(file);
   };
@@ -85,25 +85,39 @@ const MemeGenerator = () => {
 
   const handleTemplateSelect = (template) => {
     setSelectedTemplate(template);
-    setImage(null); 
-    setTexts([{ text: "", x: 0, y: 0 }]); 
+    setImage(null); // Clear uploaded image if a template is selected
+    setTexts([{ text: "", x: 0, y: 0 }]); // Reset texts when a new template is selected
   };
 
   return (
     <div style={{ textAlign: "center", padding: "20px" }}>
-      <h1>Meme Generator</h1>
-      <input type="file" accept="image/*" onChange={handleImageUpload} />
-      <div style={{ margin: "20px 0" }}>
+      <h1
+        style={{
+          color: "white",
+          fontWeight: "400",
+          fontFamily: "cursive",
+        }}
+      >
+        Meme Generator
+      </h1>
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleImageUpload}
+        className="btn btn-outline-dark"
+        style={{ borderRadius: "0" }}
+      />
+      <div style={{ marginTop: "20px" }}>
         <button
-          onClick={handleAddText}
-          className="btn"
-          style={{
-            position: "relative",
-            display: "inline-block",
-            backgroundColor: "white",
-            textAlign: "center",
-          }}
+          onClick={handleDownload}
+          className="btn btn-outline-dark"
+          style={{ borderRadius: "7%" }}
         >
+          Download Meme
+        </button>
+      </div>
+      <div style={{ margin: "20px 0" }}>
+        <button onClick={handleAddText} className="btn btn-outline-dark">
           Add Text
         </button>
       </div>
@@ -177,10 +191,15 @@ const MemeGenerator = () => {
         ))}
       </div>
       <div style={{ marginTop: "20px" }}>
-        <button onClick={handleDownload}>Download Meme</button>
-      </div>
-      <div style={{ marginTop: "20px" }}>
-        <h2>Select a Template</h2>
+        <h2
+          style={{
+            color: "white",
+            fontWeight: "400",
+            fontFamily: "cursive",
+          }}
+        >
+          Select a Template
+        </h2>
         <div
           style={{
             display: "flex",
