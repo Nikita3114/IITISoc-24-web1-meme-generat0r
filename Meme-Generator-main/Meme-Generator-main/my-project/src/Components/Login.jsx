@@ -31,7 +31,7 @@ export default function Login() {
       console.log('Login successful:', result.data);
       cookies.set('TOKEN', result.data.token, { path: '/' });
       setLoginStatus(true);
-      //navigate('/homepage');
+      //navigate('/homepage'); // Redirect to homepage
     } catch (error) {
       console.error('Login error:', error.response ? error.response.data : error.message);
       setLoginStatus(false);
@@ -52,20 +52,19 @@ export default function Login() {
             <p className="text-success">You Are Logged in Successfully</p>
           )}
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address : </Form.Label>
+            <Form.Label>User address : </Form.Label>
             <Form.Control
               type="email"
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter email"
+              placeholder="Type here(eg:user@meme)"
             />
           
           </Form.Group>
           <br />
           <Form.Group controlId="formBasicPassword">
             <Form.Label className="form-label">Password : </Form.Label>
-            <br />
             <Form.Control
               type="password"
               name="password"
