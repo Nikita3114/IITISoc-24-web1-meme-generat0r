@@ -3,12 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import Header from "./HeaderHomepage";
-import "../Styles/login.css"; // Adjust the path as needed
-
+import "../Styles/login.css"; 
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [register, setRegister] = useState(null); // Changed to null for better conditional rendering
+  const [register, setRegister] = useState(null); 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -25,13 +24,13 @@ export default function Signup() {
 
     try {
       const result = await axios(configuration);
-      console.log("Registration successful:", result.data); // Log the result to check the response
+      console.log("Registration successful:", result.data); 
       setRegister(true);
     } catch (error) {
       console.error(
         "Registration error:",
         error.response ? error.response.data : error.message
-      ); // Log the error to check what went wrong
+      ); 
       setRegister(false);
     }
   };
@@ -47,7 +46,7 @@ export default function Signup() {
       <Header />
       <br />
       <Form onSubmit={handleSubmit}>
-        {/* Display success or error message */}
+       
         {register === true && (
           <p className="text-success">You Are Registered Successfully</p>
         )}
