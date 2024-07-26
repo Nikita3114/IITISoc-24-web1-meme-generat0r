@@ -1,3 +1,4 @@
+/* login.css */
 
 .background-container {
   position: relative;
@@ -14,17 +15,17 @@
 
 .form-container {
   width: 40vw;
-  max-width: 400px; 
+  max-width: 400px; /* Ensure it doesn't get too wide on large screens */
   background-color: rgba(207, 207, 207, 0.9);
   padding: 20px;
   border-color: black;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 1;
+  z-index: 1; /* Ensure the form is above other elements */
 }
 
 .form-container .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 15px; /* Space between form fields */
 }
 
 .form-container .form-label {
@@ -37,7 +38,7 @@
   border: 1px solid #ced4da;
   border-radius: 5px;
   padding: 10px;
-  font-size: 22px;
+  font-size: 18px;
   transition: border-color 0.3s ease;
 }
 
@@ -46,6 +47,8 @@
   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
 }
 
+
+/* CSS */
 .button-81 {
   background-color: #fff;
   border: 0 solid #e2e8f0;
