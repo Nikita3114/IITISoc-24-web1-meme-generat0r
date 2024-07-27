@@ -17,7 +17,6 @@ Our meme generator website offers users an immersive experience in the world of 
 **USED LIBRARIES and DEPENDENCIES**
 
 * React : useState, useEffect, useRef , react , useContext, createContext  
-* Axios   
 * React Draggable  
 * HeadingGame  
 * react-router-dom : useNavigate , Route , Navigate, BrowserRouter  
