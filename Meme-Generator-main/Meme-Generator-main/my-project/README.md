@@ -1,70 +1,147 @@
-# Getting Started with Create React App
+**MEME GENERATOR PROJECT DOCUMENTATION** 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+*WEB DEVELOPMENT TEAM 1* 
 
-## Available Scripts
+**INTRODUCTION**
 
-In the project directory, you can run:
+Our meme generator website offers users an immersive experience in the world of memes, enabling them to unleash their creativity in generating unique content. Users have the option to select from our extensive library of popular meme templates or upload their own images to create new memes. Our platform features customizable text boxes that can be added to any image, with adjustable font color and size, as well as various filter options. Completed memes can be easily downloaded and saved for sharing across different platforms.
 
-### `npm start`
+**TECH STACK**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+\- Frontend : React  
+\- Backend : Node.js , Express.js  
+\- Database : MongoDB for storage  
+\- Styling : CSS & Tailwind  
+\- Designing \- Figma , Bootstrap
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**USED LIBRARIES and DEPENDENCIES**
 
-### `npm test`
+* React : useState, useEffect, useRef , react , useContext, createContext  
+* Axios   
+* React Draggable  
+* HeadingGame  
+* react-router-dom : useNavigate , Route , Navigate, BrowserRouter  
+* react-bootstrap : Form , Button   
+*  {render, screen} from @testing-library/react  
+* Tailwind base  
+* ReactDOM
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ **Running the Website Locally**
 
-### `npm run build`
+**Cloning on VS Code**  
+1\. Clone the repository from GitHub.  
+2\. Install dependencies using \`npm install\`.  
+3\. Start the development server with \`npm start\`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Using React CodeSandbox**  
+1\. Fork the project on CodeSandbox.  
+2\. Open the project in the browser.  
+3\. Start editing and see changes in real-time.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**MEME GENERATOR WALKTHROUGH WITH SNAPSHOTS : THE FLOW** 
 
-### `npm run eject`
+***THE LOGIN / SIGNUP PAGE***  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   
+The homepage of the meme generator website features a login section for entering your email and password, with a recurring meme series playing above and black-and-white cartoons in the background. New users can click the "Sign Up" link at the bottom to create an account, allowing them to explore the site immediately and log in later with the same credentials.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The Login and SignUp pages snapshots are respectively as follows : 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**NOTE : It’s necessary to put user address in ….xyz@abc…. Format**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![Screenshot 2024-07-26 223356](https://github.com/user-attachments/assets/ff485d57-3cd3-4717-a53c-8b599b01990b)
 
-## Learn More
+![Screenshot 2024-07-26 223448](https://github.com/user-attachments/assets/2d5ce37c-c098-4540-9e17-609471e8d04b)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+***THE WELCOME PAGE*** 
 
-### Analyzing the Bundle Size
+Upon successful login, you'll be greeted by a welcome page featuring an eye-catching interface with a series of meme animations at the top. Scrolling down reveals a black-and-white theme with humorous statements and numerous animated cartoons and drawings in the background, designed to entertain and amuse.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Snapshots are as follows : 
 
-### Making a Progressive Web App
+![Screenshot 2024-07-26 152344](https://github.com/user-attachments/assets/5e39e663-54cc-4f6d-be71-a5780b4b1653)
+![Screenshot 2024-07-26 152307](https://github.com/user-attachments/assets/0c147f20-42f2-4955-bff7-4d21600950bd)
+![Screenshot 2024-07-26 152237](https://github.com/user-attachments/assets/b7bc2c03-daa6-4269-a415-b57186e962d0)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+And you scroll down to click on the continue box to enter the meme generator page.
 
-### Deployment
+***THE MEMEGENERATOR PAGE*** 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![Screenshot 2024-07-26 153714](https://github.com/user-attachments/assets/99563203-7fe3-4827-aed2-f441321feddb)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Upon clicking continue the main meme generator page opens up with the same black and white theme and cartoons in background with a designed title of “MEME” at the top .
+
+Followed by : 
+
+1)  **An Inbuilt Meme Library :**  
+    
+The page offers a wide variety of popular meme templates that you can scroll through. Hovering over a meme image enlarges it automatically. Click on a desired template to move it to the blank area on the left, where you can edit it.
+
+The snapshots are shown below : 
+
+![Screenshot 2024-07-26 160943](https://github.com/user-attachments/assets/60f9a2d2-3ac8-4cba-80f9-47f5ee89c572)
+![Screenshot 2024-07-26 161007](https://github.com/user-attachments/assets/8485950a-34ce-4f87-a8b9-830eaad5f31d)
+![Screenshot 2024-07-26 160921](https://github.com/user-attachments/assets/6274f542-36c7-4acd-80dd-596772c7e990)
+![Screenshot 2024-07-26 173143](https://github.com/user-attachments/assets/e74f8043-d350-4e71-9943-e75e7ff71493)
+
+
+We clicked on this image and it appeared on the blank working area.  
+
+1) **Followed by various buttons to use different features as follows :** 
+
+1) ***Choose File*** : Allows us to choose any desired image from our own device for meme generation.
+
+1) ***Add Text*** : Allows us to add text boxes in which we can type any desired caption 
+
+**Text Box Features:**
+
+* Move text boxes by clicking and dragging or using the move option in the lower right corner.  
+* Adjust font size and color using the buttons below the text box.  
+* Text boxes remain fixed to the meme/image and are included when downloaded.  
+* Select color gradients using the color button below the text box.  
+* Add multiple text boxes and delete any by clicking the cross button in the upper right corner.
+
+![Screenshot 2024-07-26 155327](https://github.com/user-attachments/assets/89557278-d0e2-4f33-b8db-79c699b7fd3a)
+![Screenshot 2024-07-26 155454](https://github.com/user-attachments/assets/d5cb0121-2d4c-4a56-bb68-d7f6edeeca41)
+
+
+
+
+1) ***Download MEME*** : When we are completely satisfied with the final meme we have created we can download / save it in our device using this button. 
+
+ 
+
+1) ***Filter Button*** i.e. Three Parallel Line Menu Button on the Blank Area : 
+
+	This feature allows us to select the filter for our selected meme/image   
+	We can just click on anyone fliter we want and can see the changes .
+
+The images are as follows : 
+
+![Screenshot 2024-07-26 160133](https://github.com/user-attachments/assets/ba23047e-9472-4c1f-a98c-6a7818966294)
+
+![Screenshot 2024-07-26 160203](https://github.com/user-attachments/assets/3bb3eb53-1151-4d5a-965a-b0ad4c8084b6)
+
+
+
+**\# SAMPLE MEMES :** 
+
+We asked our friends to use our website and generate some cool memes.  
+They loved it \!  
+Few of those memes are as follows : 
+
+
+![meme (3)](https://github.com/user-attachments/assets/47a7f866-b7da-4655-88c9-026b52cfd52e)
+![meme (4)](https://github.com/user-attachments/assets/1bcbcbbb-4151-4d89-a203-af1ac6cc411d)
+![meme (5)](https://github.com/user-attachments/assets/6b547331-fe03-4cde-9e7e-ae32b6180c09)
+
+
+**\*\* THE END \! \*\***   
